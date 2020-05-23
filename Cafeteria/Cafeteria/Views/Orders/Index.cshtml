@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Cafeteria.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+@if (User.Identity.IsAuthenticated)
+{
+
+
+    <div class="masthead padspace">
+
+
+        <div class="row justify-content-center">
+            <p class="display-4">
+                Lista de Ordenes
+            </p>
+        </div>
+
+        <p>
+            <a href="@Url.Action("Create", "Orders")" class="btn btn-success btn-sm btn-icon-split">
+
+                <span class="icon text-white-50"> <i class="fas fa-plus"></i> </span>
+                <span class="text">Nueva orden</span>
+            </a>
+        </p>
+        <table class="table table-sm " id="myOrder">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre Producto
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OrderCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Quantity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Product.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Total)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Product.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrderCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Product.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Total)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+
+                            <a href="@Url.Action("Edit", "Orders", new { id = item.Id })" class="text-warning"><i class="fas fa-edit"></i> </a> |
+
+                            <a href="@Url.Action("Details", "Orders", new { id = item.Id })" class="text-info"><i class="fas fa-info-circle"></i></a> |
+
+                            <a href="@Url.Action("Delete", "Orders", new { id = item.Id })" class="text-danger"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+    <div class="masthead">
+        <div class="row justify-content-center">
+            <p class="lead">Como admin "NO" usar el boton de abajo</p>
+        </div>
+
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+
+        <script>
+            $(document).ready(function () {
+                $('#myOrder').DataTable();
+            });
+        </script>
+
+    }
+
+}
+@* aqui esta seccione s para que el cliente regrese a la parte de ordenes  de home ,
+    para que no pueda ver el index de ordenes como admin *@
+<br />
+<div class="masthead">
+    <div class="row justify-content-center">
+        <a href="@Url.Action("Orden", "Home")" class="btn btn-success">Regresar a Orden</a>
+    </div>
+    </div>

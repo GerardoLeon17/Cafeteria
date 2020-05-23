@@ -1,0 +1,183 @@
+﻿@model IEnumerable<Cafeteria.Models.Order>
+
+
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Cafeteria Gerald</title>
+    <link rel="icon" type="image/x-icon" href="~/Content/Img/Cafe.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/Content/startbootstrap-agency-gh-pages/css/styles.css" rel="stylesheet" />
+    <link href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+</head>
+<body id="page-top">
+    <!-- Navegacion-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">Cafeteria Gerald</a>
+            <a class="navbar-brand js-scroll-trigger" href="#page-top"></a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars ml-1"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ml-auto">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="@Url.Action("Login", "Account")">Iniciar Sesion</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="@Url.Action("Menu", "Home")">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="@Url.Action("Orden", "Home")">Orden</a></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container">
+            <div class="masthead-heading ">Ordenes</div>
+
+        </div>
+    </header>
+    <!-- Menu-->
+    <section class="page-section" id="services">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase display-3 bg-dark text-white">Ordenes</h2>
+                <br />
+                <br />
+
+                <table class="table table-sm " id="myOrder">
+                    <thead>
+                        <tr>
+                          
+                            <th>
+                                @Html.DisplayNameFor(model => model.OrderCode)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Quantity)
+                            </th>
+                           
+                            <th>
+                                @Html.DisplayNameFor(model => model.Total)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Status)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                               
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OrderCode)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Quantity)
+                                </td>
+                               
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Total)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td>
+
+                                    
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+    <!-- Footer-->
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-lg-left">Copyright © Cafeteria Gerald 2020</div>
+                <div class="col-lg-4 my-3 my-lg-0">
+                    <a class="btn btn-info btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a><a class="btn btn-info btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a><a class="btn btn-info btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!-- Contact form JS-->
+    <script src="~/Content/startbootstrap-agency-gh-pages/assets/mail/jqBootstrapValidation.js"></script>
+    <script src="~/Content/startbootstrap-agency-gh-pages/assets/mail/contact_me.js"></script>
+    <!-- Core theme JS-->
+    <script src="~/Content/startbootstrap-agency-gh-pages/js/scripts.js"></script>
+    <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+
+    
+
+        @Scripts.Render("~/bundles/jqueryval")
+
+        <script>
+            $(document).ready(function () {
+                $('#myOrder').DataTable();
+            });
+        </script>
+
+    }
+
+</body>
+</html>
+
+
+
+
